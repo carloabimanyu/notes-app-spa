@@ -1,5 +1,6 @@
 import { Link, useParams } from "react-router-dom";
 import notes from "../utils/notes";
+import { formatDate } from "../utils/formatDate";
 
 function NoteDetailPage() {
     const { id } = useParams();
@@ -9,12 +10,7 @@ function NoteDetailPage() {
         return <p>Note not found</p>;
     }
 
-    const formattedDate = new Date(note.createdAt).toLocaleDateString('en-GB', {
-        weekday: 'long',
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric',
-    });
+    const formattedDate = formatDate(note.createdAt);
 
     return (
         <section>
