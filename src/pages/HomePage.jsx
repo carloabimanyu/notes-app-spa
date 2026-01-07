@@ -1,4 +1,4 @@
-import NoteList from "../components/NoteList";
+import FilteredNoteList from "../components/FilteredNoteList";
 import notes from "../utils/notes";
 
 function HomePage() {
@@ -7,7 +7,7 @@ function HomePage() {
     return (
         <section>
             <h2>Active Notes</h2>
-            <NoteList notes={activeNotes} />
+            <FilteredNoteList notes={activeNotes} queryKey="title" />
         </section>
     );
 }

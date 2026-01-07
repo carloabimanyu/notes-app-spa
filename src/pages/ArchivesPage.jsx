@@ -1,4 +1,4 @@
-import NoteList from "../components/NoteList";
+import FilteredNoteList from "../components/FilteredNoteList";
 import notes from "../utils/notes";
 
 function ArchivesPage() {
@@ -7,7 +7,7 @@ function ArchivesPage() {
     return (
         <section>
             <h2>Archived Notes</h2>
-            <NoteList notes={archivedNotes} />
+            <FilteredNoteList notes={archivedNotes} queryKey="title" />
         </section>
     );
 }
