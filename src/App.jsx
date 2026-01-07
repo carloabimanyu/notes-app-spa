@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import MainLayout from "./layouts/MainLayout";
 import HomePage from "./pages/HomePage";
 import ArchivesPage from "./pages/ArchivesPage";
+import NoteDetailPage from "./pages/NoteDetailPage";
 
 function App() {
     return (
@@ -10,7 +11,7 @@ function App() {
                 <Route path="/" element={<MainLayout />}>
                     <Route index element={<HomePage />} />
                     <Route path="archives" element={<ArchivesPage />} />
-                    <Route path="notes/:id" element={<h2>This is Detail Note Page</h2>} />
+                    <Route path="notes/:id" element={<NoteDetailPage />} />
                 </Route>
             </Routes>
         </BrowserRouter>
