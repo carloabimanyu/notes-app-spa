@@ -1,8 +1,10 @@
+import { formatDate } from "../utils/date";
+
 function NoteItem({ note }) {
     return (
         <article>
             <h3>{note.title}</h3>
-            <p>{note.createdAt}</p>
+            <p>{formatDate(note.createdAt)}</p>
             <p>{note.body}</p>
         </article>
     )
