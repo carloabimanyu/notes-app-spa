@@ -1,24 +1,24 @@
 import React from "react";
-import NoteList from "../components/NoteList";
+import NotesPage from "./base/NotesPage";
 import { getArchivedNotes } from "../utils/notes-data";
+import { useSearchParams } from "react-router-dom";
 
-class ArchivesPage extends React.Component {
-    constructor(props) {
-        super(props);
+function ArchivesPageWrapper() {
+    const [searchParams, setSearchParams] = useSearchParams();
+    const activeKeyword = searchParams.get("title") || "";
 
-        this.state = {
-            notes: getArchivedNotes(),
-        };
+    function onKeywordChange(keyword) {
+        setSearchParams({ title: keyword });
     }
 
-    render() {
-        return (
-            <section>
-                <h2>Archived Notes</h2>
-                <NoteList notes={this.state.notes} />
-            </section>
-        );
-    }
+    return (
+        <NotesPage
+            title="Archived Notes"
+            initialNotes={getArchivedNotes()}
+            defaultKeyword={activeKeyword}
+            onKeywordChange={onKeywordChange}
+        />
+    );
 }
 
-export default ArchivesPage;
+export default ArchivesPageWrapper;
