@@ -1,10 +1,24 @@
-function ArchivesPage() {
-    return (
-        <section>
-            <h2>Archived Notes</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis assumenda quisquam sed sunt quae cum, facilis commodi quibusdam vel molestiae molestias veritatis dolorem exercitationem. Dolore, autem, dolorem dolor laboriosam suscipit praesentium omnis modi consequatur velit deleniti eos neque possimus magni illo exercitationem asperiores dicta adipisci sit aliquid architecto repellat quisquam!</p>
-        </section>
-    );
+import React from "react";
+import NoteList from "../components/NoteList";
+import { getArchivedNotes } from "../utils/notes-data";
+
+class ArchivesPage extends React.Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            notes: getArchivedNotes(),
+        };
+    }
+
+    render() {
+        return (
+            <section>
+                <h2>Archived Notes</h2>
+                <NoteList notes={this.state.notes} />
+            </section>
+        );
+    }
 }
 
 export default ArchivesPage;
