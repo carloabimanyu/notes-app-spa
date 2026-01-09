@@ -2,6 +2,7 @@ import React from "react";
 import NoteList from "../../components/NoteList";
 import SearchBar from "../../components/SearchBar";
 import { filterNotesByTitle } from "../../utils/filter";
+import AddNoteButton from "../../components/AddNoteButton";
 
 class NotesPage extends React.Component {
     constructor(props) {
@@ -40,6 +41,7 @@ class NotesPage extends React.Component {
                     onKeywordChange={this.onKeywordChangeHandler}
                 />
                 <NoteList notes={filteredNotes} />
+                <AddNoteButton />
             </section>
         );
     }
