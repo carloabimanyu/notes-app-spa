@@ -12,4 +12,17 @@ function getNoteById(id) {
     return notes.find((note) => note.id === id);
 }
 
-export { getActiveNotes, getArchivedNotes, getNoteById };
+function addNote(title, body) {
+    const newNote = {
+        id: `notes-${Date.now()}`,
+        title: title || '(untitled)',
+        body,
+        createdAt: new Date().toISOString(),
+        archived: false,
+    };
+
+    notes.push(newNote);
+    return newNote;
+}
+
+export { getActiveNotes, getArchivedNotes, getNoteById, addNote };

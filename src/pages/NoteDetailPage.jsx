@@ -1,5 +1,6 @@
 import React from "react";
 import { useParams } from "react-router-dom";
+import parser from "html-react-parser";
 import { getNoteById } from "../utils/notes-data";
 import { formatDate } from "../utils/date";
 
@@ -33,7 +34,7 @@ class NoteDetailPageContent extends React.Component {
             <article>
                 <h2>{note.title}</h2>
                 <p>{formatDate(note.createdAt)}</p>
-                <p>{note.body}</p>
+                <p>{parser(note.body)}</p>
             </article>
         );
     }

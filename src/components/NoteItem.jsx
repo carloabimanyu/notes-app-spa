@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import parser from "html-react-parser";
 import { formatDate } from "../utils/date";
 
 function NoteItem({ note }) {
@@ -8,7 +9,7 @@ function NoteItem({ note }) {
                 <Link to={`/notes/${note.id}`}>{note.title}</Link>
             </h3>
             <p>{formatDate(note.createdAt)}</p>
-            <p>{note.body}</p>
+            <p>{parser(note.body)}</p>
         </article>
     )
 }
