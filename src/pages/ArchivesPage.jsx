@@ -14,6 +14,7 @@ function ArchivesPageWrapper() {
     return (
         <NotesPage
             title="Archived Notes"
+            showArchived={true}
             initialNotes={getArchivedNotes()}
             defaultKeyword={activeKeyword}
             onKeywordChange={onKeywordChange}

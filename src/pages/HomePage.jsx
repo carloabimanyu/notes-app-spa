@@ -14,6 +14,7 @@ function HomePageWrapper() {
     return (
         <NotesPage
             title="Active Notes"
+            showArchived={false}
             initialNotes={getActiveNotes()}
             defaultKeyword={activeKeyword}
             onKeywordChange={onKeywordChange}
