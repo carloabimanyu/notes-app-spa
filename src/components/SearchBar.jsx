@@ -1,11 +1,16 @@
+import TextField from "@mui/material/TextField";
+
 function SearchBar({ keyword, onKeywordChange }) {
     return (
         <form>
-            <input 
-                type="text"
-                placeholder="Search by title..."
+            <TextField
+                label="Search by title"
+                variant="outlined"
                 value={keyword}
                 onChange={(event) => onKeywordChange(event.target.value)}
+                fullWidth
+                size="small"
+                margin="normal"
             />
         </form>
     );
