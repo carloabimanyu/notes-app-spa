@@ -4,6 +4,8 @@ import SearchBar from "../../components/SearchBar";
 import { filterNotesByTitle } from "../../utils/filter";
 import AddNoteButton from "../../components/AddNoteButton";
 import { deleteNote, toggleArchiveNote } from "../../utils/notes-data";
+import Typography from "@mui/material/Typography";
+import Stack from "@mui/material/Stack";
 
 class NotesPage extends React.Component {
     constructor(props) {
@@ -51,16 +53,20 @@ class NotesPage extends React.Component {
 
         return (
             <section>
-                <h2>{title}</h2>
-                <SearchBar
-                    keyword={keyword}
-                    onKeywordChange={this.onKeywordChangeHandler}
-                />
-                <NoteList 
-                    notes={filteredNotes} 
-                    onDelete={this.onDeleteNoteHandler}
-                    onToggleArchive={this.onToggleArchiveHandler}
-                />
+                <Stack spacing={2}>
+                    <Typography variant="h5" gutterBottom>
+                        {title}
+                    </Typography>
+                    <SearchBar
+                        keyword={keyword}
+                        onKeywordChange={this.onKeywordChangeHandler}
+                    />
+                    <NoteList 
+                        notes={filteredNotes} 
+                        onDelete={this.onDeleteNoteHandler}
+                        onToggleArchive={this.onToggleArchiveHandler}
+                    />
+                </Stack>
                 {showArchived === false && <AddNoteButton />}
             </section>
         );
