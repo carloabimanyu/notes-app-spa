@@ -1,28 +1,22 @@
 import { Link } from "react-router-dom";
+import Fab from "@mui/material/Fab";
+import AddIcon from "@mui/icons-material/Add";
 
 function AddNoteButton() {
     return (
-        <Link
+        <Fab
+            color="primary"
+            component={Link}
             to="/notes/new"
-            style={{
+            sx={{
                 position: "fixed",
-                bottom: "20px",
-                right: "20px",
-                backgroundColor: "#0d6efd",
-                color: "#fff",
-                borderRadius: "50%",
-                width: "50px",
-                height: "50px",
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                fontSize: "24px",
-                textDecoration: "none",
-                boxShadow: "0 2px 6px rgba(0,0,0,0.3)",
+                bottom: 16,
+                right: 16,
             }}
+            aria-label="add note"
         >
-            +
-        </Link>
+            <AddIcon />
+        </Fab>
     );
 }
 

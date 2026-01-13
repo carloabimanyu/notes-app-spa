@@ -1,12 +1,18 @@
+import Stack from "@mui/material/Stack";
+import Typography from "@mui/material/Typography";
 import NoteItem from "./NoteItem";
 
 function NoteList({ notes, onDelete, onToggleArchive }) {
     if (!notes.length) {
-        return <p>No notes found</p>;
+        return (
+            <Typography color="text.secondary">
+                No notes found
+            </Typography>
+        );
     }
 
     return (
-        <section>
+        <Stack spacing={2}>
             {notes.map((note) => (
                 <NoteItem 
                     key={note.id} 
@@ -15,7 +21,7 @@ function NoteList({ notes, onDelete, onToggleArchive }) {
                     onToggleArchive={onToggleArchive}
                 />
             ))}
-        </section>
+        </Stack>
     );
 }
 

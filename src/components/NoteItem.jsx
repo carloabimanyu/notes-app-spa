@@ -1,24 +1,56 @@
 import { Link } from "react-router-dom";
 import parser from "html-react-parser";
 import { formatDate } from "../utils/date";
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import Typography from "@mui/material/Typography";
+import CardActions from "@mui/material/CardActions";
+import Button from "@mui/material/Button";
 
 function NoteItem({ note, onDelete, onToggleArchive }) {
     return (
-        <article style={{ border: "1px solid #ccc", padding: "10px", marginBottom: "10px", position: "relative" }}>
-            <h3>
-                <Link to={`/notes/${note.id}`}>{note.title}</Link>
-            </h3>
-            <p>{formatDate(note.createdAt)}</p>
-            <p>{parser(note.body)}</p>
+        <Card sx={{ mb: 2}}>
+            <CardContent>
+                <Typography 
+                    variant="h6"
+                    component={Link}
+                    to={`/notes/${note.id}`}
+                    sx={{ textDecoration: "none", color: "inherit" }}
+                >
+                    {note.title}
+                </Typography>
 
-            <div style={{ position: "absolute", top: "10px", right: "10px" }}>
-                <button onClick={() => onDelete(note.id)} style={{ marginRight: "5px" }}>Delete</button>
-                <button onClick={() => onToggleArchive(note.id)}>
+                <Typography
+                    variant="caption"
+                    color="text.secondary"
+                    component="div"
+                >
+                    {formatDate(note.createdAt)}
+                </Typography>
+
+                <Typography sx={{ mt: 1 }}>
+                    {parser(note.body)}
+                </Typography>
+            </CardContent>
+
+            <CardActions>
+                <Button
+                    size="small"
+                    color="error"
+                    onClick={() => onDelete(note.id)}
+                >
+                    Delete
+                </Button>
+
+                <Button
+                    size="small"
+                    onClick={() => onToggleArchive(note.id)}
+                >
                     {note.archived ? "Unarchive" : "Archive"}
-                </button>
-            </div>
-        </article>
-    )
+                </Button>
+            </CardActions>
+        </Card>
+    );
 }
 
 export default NoteItem;
