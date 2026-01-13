@@ -3,6 +3,8 @@ import { useParams } from "react-router-dom";
 import parser from "html-react-parser";
 import { getNoteById } from "../utils/notes-data";
 import { formatDate } from "../utils/date";
+import Paper from "@mui/material/Paper";
+import Typography from "@mui/material/Typography";
 
 function NoteDetailPage() {
     const { id } = useParams();
@@ -31,11 +33,17 @@ class NoteDetailPageContent extends React.Component {
         }
 
         return (
-            <article>
-                <h2>{note.title}</h2>
-                <p>{formatDate(note.createdAt)}</p>
-                <p>{parser(note.body)}</p>
-            </article>
+            <Paper sx={{ p: 3 }}>
+                <Typography variant="h5" gutterBottom>
+                    {note.title}
+                </Typography>
+                <Typography variant="caption" color="text.secondary" display="block">
+                    {formatDate(note.createdAt)}
+                </Typography>
+                <Typography component="div" sx={{ mt: 2 }}>
+                    {parser(note.body)}
+                </Typography>
+            </Paper>
         );
     }
 }
